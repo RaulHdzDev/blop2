@@ -48,7 +48,7 @@ String _numero="8312366323";
                         color: Colors.black,
                         size: 20,
                       ),
-                      onPressed: () => _showToast("Desarolladores trabajando"))
+                      onPressed: () => Text("o"))
         ],
       ),
     );
@@ -86,7 +86,7 @@ Widget _correo = new Container(
                         color: Colors.black,
                         size: 20,
                       ),
-                      onPressed: () => _showToast("Desarolladores trabajando"))
+                      onPressed: () => Text("o"))
         ],
       ),
     );
@@ -123,7 +123,13 @@ Widget _telefono = new Container(
                         color: Colors.black,
                         size: 20,
                       ),
-                      onPressed: () => _showToast("Desarolladores trabajando"))
+                      onPressed: () {
+                        showBottomSheet(context: context, builder: (context)=>Container(
+                          height: 200,
+                          color: Colors.lightBlue,
+                        ));
+                      }),
+                      
         ],
       ),
     );
@@ -152,10 +158,6 @@ Widget _telefono = new Container(
       ),
     );
   }
-    void _showToast(String message) {
-    Fluttertoast.showToast(
-      msg: message,
-      fontSize: 15,
-    );
+  
+     
   }
-}
