@@ -1,8 +1,11 @@
+import 'home.dart';
 import 'inicio_nav.dart';
 import 'package:bloop/home.dart';
 import 'package:bloop/inicio_nav.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'inicio_nav.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -25,7 +28,7 @@ class _bloopState extends State<bloop> {
     // TODO: implement initState
     super.initState();
     Timer(
-      Duration(seconds: 5),
+      Duration(seconds: 4),
       () {
         Navigator.push(
           this.context,
