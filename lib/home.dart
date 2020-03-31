@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                                 child: Column(
                                   children: <Widget>[
                                     TextFormField(
-                                      style: TextStyle(color: Colors.lightBlue),
+                                      style: TextStyle(color: Colors.black),
                                       autofocus: true,
                                       textAlign: TextAlign.left,
                                       autocorrect: true,
@@ -111,7 +111,7 @@ class _HomeState extends State<Home> {
                                     ),
                                     SizedBox(height: 15),
                                     TextFormField(
-                                      style: TextStyle(color: Colors.lightBlue),
+                                      style: TextStyle(color: Colors.black),
                                       obscureText: true,
                                       maxLength: 10,
                                       autofocus: true,
@@ -128,7 +128,8 @@ class _HomeState extends State<Home> {
                                         labelText: "Contraseña",
                                         labelStyle: TextStyle(
                                             fontFamily: "CaviarDreams",
-                                            fontSize: 18),
+                                            fontSize: 18,
+                                            ),
                                         border: OutlineInputBorder(
                                             borderSide: BorderSide(),
                                             borderRadius: BorderRadius.all(
@@ -149,8 +150,9 @@ class _HomeState extends State<Home> {
                               1.6,
                               FlatButton(
                                   onPressed: () {
-                                      Navigator.of(context).pushReplacementNamed("inicio_nav");
-                                    },
+                                    Navigator.of(context)
+                                        .pushReplacementNamed("inicio_nav");
+                                  },
                                   child: ButtonAnimation(
                                       Color.fromRGBO(129, 213, 250, 2),
                                       Color.fromRGBO(40, 182, 246, 4)))),
