@@ -1,4 +1,4 @@
-import 'package:bloop/animation/FadeAnimation.dart';
+
 import 'package:bloop/pages/notification_widget/header.dart';
 import 'package:bloop/pages/notification_widget/list.dart';
 import 'package:bloop/pages/notification_widget/listHistory.dart';
@@ -12,7 +12,8 @@ class notification_fragment extends StatelessWidget {
       bottom: true,
       child: Column(children: <Widget>[
         Header(),
-        new Container( //Texto de rencientes
+        new Container(
+          //Texto de rencientes
           child: Row(
             children: <Widget>[
               Text(
@@ -25,9 +26,11 @@ class notification_fragment extends StatelessWidget {
             ],
           ),
         ),
-        new Expanded(child: ListNotification(), ),
-        new Expanded (child: HistoryList())
-      ]),
+        new Expanded(
+          child: ListNotification(),
+        ),
+        new Expanded(child: HistoryList()),
+        ]),
     ));
   }
 }
