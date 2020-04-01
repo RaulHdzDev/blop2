@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:bloop/complements/custom_expansion_tile.dart' as custom;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:bloop/animation/FadeAnimation.dart';
+import 'package:bloop/pages/homePage_widget/expansionCites.dart';
 import '../animation/FadeAnimation.dart';
 
 class homefragment extends StatefulWidget {
@@ -12,16 +14,13 @@ class homefragment extends StatefulWidget {
 
 class _homefragmentState extends State<homefragment> {
   String _txtcita = " Próxima cita:";
-  String _nota="Vete ya Si no encuentras motivos Para seguir conmigo Para qué continuar Es mejor Terminar como amigos Que ser como enemigos Esperando atacar Vete si no sientes que mi boca te provoca Sensaciones cuando ronda por tus labios Vete si tu cuerpo no se excita Cuando en forma de caricias Te recorro con mis manos Nada justifica en esta vida Soportar con la mentira una relación Si no hay amor, vete ya Si no hay amor";
+  String _nota="Notas o consideraciones respecto a su proxima cita, si la cambia o demas aqui aparecerá. Asi como tambien Detalles";
   String _txttiempo = " 3 días con 4 horas";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-
-        child: Column(
-                    
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: ListView(
           children: <Widget>[
             SizedBox(
               height: 40,
@@ -49,30 +48,7 @@ class _homefragmentState extends State<homefragment> {
                     bottomLeft: Radius.circular(10),
                     bottomRight: Radius.circular(10)),
               ),
-              child: new Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(_txtcita + " " + _txttiempo,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: "CaviarDreams",
-                                fontSize: 14))
-                      ],
-                    ),
-                  ),
-                  IconButton(
-                      icon: Icon(
-                        Icons.edit,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                      onPressed: () => _showToast("Desarolladores trabajando"))
-                ],
-              ),
-            ),
+              child: ExpansionCites()),
             ),
             FadeAnimation(1.3,Text(
               "Notas",
