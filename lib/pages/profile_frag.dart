@@ -42,13 +42,7 @@ String _numero="8312366323";
                 ],
               ),
           ),
-          IconButton(
-                      icon: Icon(
-                        Icons.edit,
-                        color: Colors.black,
-                        size: 20,
-                      ),
-                      onPressed: () => Text("o"))
+    
         ],
       ),
     );
@@ -80,13 +74,7 @@ Widget _correo = new Container(
                 ],
               ),
           ),
-          IconButton(
-                      icon: Icon(
-                        Icons.edit,
-                        color: Colors.black,
-                        size: 20,
-                      ),
-                      onPressed: () => Text("o"))
+         
         ],
       ),
     );
@@ -117,18 +105,7 @@ Widget _telefono = new Container(
                 ],
               ),
           ),
-          IconButton(
-                      icon: Icon(
-                        Icons.edit,
-                        color: Colors.black,
-                        size: 20,
-                      ),
-                      onPressed: () {
-                        showBottomSheet(context: context, builder: (context)=>Container(
-                          height: 200,
-                          color: Colors.lightBlue,
-                        ));
-                      }),
+
                       
         ],
       ),
@@ -140,11 +117,11 @@ Widget _telefono = new Container(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: 20,
+              height: 45,
             ),
             CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 100.0,
+              backgroundColor: Colors.transparent,
+              radius: 110.0,
               child: Image(
                 image: AssetImage('assets/logohemo.png'),
               ),
