@@ -23,11 +23,11 @@ class _homefragmentState extends State<homefragment> {
         child: ListView(
           children: <Widget>[
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             CircleAvatar(
               backgroundColor: Colors.transparent,
-              radius: 130.0,
+              radius: 110.0,
               child: 
               FadeAnimation(1,Image(
                 image: AssetImage('assets/logohemo.png'),
@@ -51,7 +51,7 @@ class _homefragmentState extends State<homefragment> {
               child: ExpansionCites()),
             ),
             FadeAnimation(1.3,Text(
-              "Notas",
+              " Notas",
               style: TextStyle(
                   color: Colors.black,
                   fontFamily: "CaviarDreams",
