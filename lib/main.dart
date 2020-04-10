@@ -4,10 +4,13 @@ import 'package:bloop/home.dart';
 import 'package:bloop/inicio_nav.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'inicio_nav.dart';
+import 'dominio/sharedPref.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = new SharedPref();
+  await prefs.initPrefs();
   runApp(MaterialApp(
     home: bloop(),
     debugShowCheckedModeBanner: false,
@@ -23,6 +26,7 @@ class bloop extends StatefulWidget {
 }
 
 class _bloopState extends State<bloop> {
+  final prefs = new SharedPref();
   @override
   void initState() {
     // TODO: implement initState
@@ -30,12 +34,16 @@ class _bloopState extends State<bloop> {
     Timer(
       Duration(seconds: 4),
       () {
-        Navigator.push(
-          this.context,
-          MaterialPageRoute(
-            builder: (context) => Home(),
-          ),
-        );
+        if (prefs.login == 'true') {
+          Navigator.pushReplacementNamed(context, 'inicio_nav');
+        } else {
+          Navigator.push(
+            this.context,
+            MaterialPageRoute(
+              builder: (context) => Home(),
+            ),
+          );
+        }
       },
     );
   }
