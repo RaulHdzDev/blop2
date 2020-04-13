@@ -47,6 +47,7 @@ class _profile_fragmentState extends State<profile_fragment> {
               ],
             ),
           ),
+          
           IconButton(
               icon: Icon(
                 Icons.edit,
@@ -80,6 +81,7 @@ class _profile_fragmentState extends State<profile_fragment> {
               ],
             ),
           ),
+          
           IconButton(
               icon: Icon(
                 Icons.edit,
@@ -110,7 +112,7 @@ class _profile_fragmentState extends State<profile_fragment> {
                   _numero,
                   style: new TextStyle(color: Colors.grey[850], fontSize: 16.0),
                 ),
-              ],
+              
             ),
           ),
           IconButton(
@@ -126,7 +128,7 @@ class _profile_fragmentState extends State<profile_fragment> {
                           height: 200,
                           color: Colors.lightBlue,
                         ));
-              }),
+              }),                      
         ],
       ),
     );
@@ -137,11 +139,11 @@ class _profile_fragmentState extends State<profile_fragment> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: 20,
+              height: 45,
             ),
             CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 100.0,
+              backgroundColor: Colors.transparent,
+              radius: 110.0,
               child: Image(
                 image: AssetImage('assets/logohemo.png'),
               ),

@@ -32,7 +32,7 @@ class _bloopState extends State<bloop> {
     // TODO: implement initState
     super.initState();
     Timer(
-      Duration(seconds: 4),
+      Duration(seconds: 2),
       () {
         if (prefs.login == 'true') {
           Navigator.pushReplacementNamed(context, 'inicio_nav');
