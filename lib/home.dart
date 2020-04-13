@@ -1,7 +1,10 @@
 import 'package:bloop/animation/ButtonAnimation.dart';
 import 'package:bloop/animation/FadeAnimation.dart';
+import 'package:bloop/dominio/sharedPref.dart';
 import 'package:bloop/main.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -13,6 +16,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final _controllername = TextEditingController();
   final _controllerpassword = TextEditingController();
+  String correo, codigo;
+  String mensaje = '';
+  String username = '', telefono = ''; //variable se usa en le metodo login
+  final prefs = new SharedPref();
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +102,7 @@ class _HomeState extends State<Home> {
                                           color: Colors.lightBlue,
                                         ),
                                         labelText: "Correo",
-                                        helperText: "tunombre@ejemplo.com",
+                                        helperText:"tucorreo@ejemplo.com",
                                         labelStyle: TextStyle(
                                             fontFamily: "CaviarDreams",
                                             fontSize: 18),
@@ -127,9 +134,9 @@ class _HomeState extends State<Home> {
                                         ),
                                         labelText: "Contraseña",
                                         labelStyle: TextStyle(
-                                            fontFamily: "CaviarDreams",
-                                            fontSize: 18,
-                                            ),
+                                          fontFamily: "CaviarDreams",
+                                          fontSize: 18,
+                                        ),
                                         border: OutlineInputBorder(
                                             borderSide: BorderSide(),
                                             borderRadius: BorderRadius.all(
@@ -150,8 +157,18 @@ class _HomeState extends State<Home> {
                               1.6,
                               FlatButton(
                                   onPressed: () {
-                                    Navigator.of(context)
-                                        .pushReplacementNamed("inicio_nav");
+                                    correo = _controllername.text;
+                                    codigo = _controllerpassword.text;
+                                    if (correo == '' || codigo == '') {
+                                      mensaje = 'Por favor llene los campos.';
+                                      _alertaCredV(context, mensaje);
+                                    } else {
+                                      //MetodoLogin.login(correo, codigo, context);
+                                      login(correo, codigo, context);
+                                      prefs.correo = correo ?? '';
+                                      prefs.login = 'true' ?? 'false';
+                                      //Navigator.pop(context);
+                                    }
                                   },
                                   child: ButtonAnimation(
                                       Color.fromRGBO(129, 213, 250, 2),
@@ -165,5 +182,62 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  //----------INICIA METODO LOGIN-----------------
+
+  Future<Map<String, dynamic>> login(String correo, String contra, BuildContext context) async {
+    final response = await http.post(
+        'http://mante.hosting.acm.org/hemodialisis/mobile/loginHemoMobile.php',
+        body: { // deja tu like
+          'correo_electronico': correo,
+          'codigo': contra,
+        });
+
+    var datauser = json.decode(response.body) ?? '';
+
+    if (datauser.toString().length == 0) {
+      setState(() {
+        mensaje = "Usuario o Contraseña incorrectos";
+        _alertaCredV(context, mensaje);
+      });
+    } else {
+      setState(() {
+        prefs.nombre = datauser['nombre'] ?? '';
+        prefs.telefono = datauser['num_contacto_cel'] ?? '';
+      });
+      Navigator.pushReplacementNamed(context, 'inicio_nav');
+    }
+    return datauser;
+  }
+
+//-----------------FIN METODO LOGIN----------------
+
+  void _alertaCredV(BuildContext context, String mensaje) {
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            title: Text('Error de credenciales'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                //Por favor llene los campos.
+                Text('$mensaje'),
+              ],
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Ok'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 }
