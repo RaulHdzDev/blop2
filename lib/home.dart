@@ -203,8 +203,8 @@ class _HomeState extends State<Home> {
       });
     } else {
       setState(() {
-        prefs.nombre = datauser['nombre'] ?? '';
-        prefs.telefono = datauser['num_contacto_cel'] ?? '';
+        prefs.nombre = datauser['nombre'].toString() ?? '';
+        prefs.telefono = datauser['num_contacto_cel'].toString() ?? '';
       });
       Navigator.pushReplacementNamed(context, 'inicio_nav');
     }

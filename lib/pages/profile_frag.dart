@@ -112,7 +112,7 @@ class _profile_fragmentState extends State<profile_fragment> {
                   _numero,
                   style: new TextStyle(color: Colors.grey[850], fontSize: 16.0),
                 ),
-              
+              ]
             ),
           ),
           IconButton(
