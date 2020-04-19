@@ -26,6 +26,16 @@ class SharedPref {
     _prefs.setString('nombre', value);
   }
 
+  //-------------ID-------------
+
+  get  id {
+    return _prefs.getString('id') ?? '';
+  }
+
+  set id (String value) {
+    _prefs.setString('id', value);
+  }
+
   //-----------CORREO---------------
 
   get correo {

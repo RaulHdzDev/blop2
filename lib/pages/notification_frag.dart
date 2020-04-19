@@ -4,7 +4,17 @@ import 'package:bloop/pages/notification_widget/list.dart';
 import 'package:bloop/pages/notification_widget/listHistory.dart';
 import 'package:flutter/material.dart';
 
-class notification_fragment extends StatelessWidget {
+class notification_fragment extends StatefulWidget {
+  @override
+  _notification_fragmentState createState() => _notification_fragmentState();
+}
+
+class _notification_fragmentState extends State<notification_fragment> {
+  @override
+  void initState() {
+    super.initState();
+  }
+   
   @override
   Widget build(BuildContext context) {
     return Scaffold(

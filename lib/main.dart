@@ -1,3 +1,4 @@
+
 import 'home.dart';
 import 'inicio_nav.dart';
 import 'package:bloop/home.dart';
@@ -11,15 +12,23 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = new SharedPref();
   await prefs.initPrefs();
-  runApp(MaterialApp(
-    home: bloop(),
-    debugShowCheckedModeBanner: false,
-    routes: <String, WidgetBuilder>{
-      "inicio_nav": (BuildContext context) => BottomNavBar(),
-    },
-  ));
+  runApp(MyApp());
 }
 
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  MaterialApp(
+      home: bloop(),
+      debugShowCheckedModeBanner: false,
+      routes: <String, WidgetBuilder>{
+        "inicio_nav": (BuildContext context) => BottomNavBar(),
+      },
+    );
+  }
+}
 class bloop extends StatefulWidget {
   @override
   _bloopState createState() => _bloopState();
@@ -29,7 +38,6 @@ class _bloopState extends State<bloop> {
   final prefs = new SharedPref();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Timer(
       Duration(seconds: 2),

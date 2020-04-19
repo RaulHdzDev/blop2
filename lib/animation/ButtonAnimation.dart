@@ -146,7 +146,7 @@ class _ButtonAnimationState extends State<ButtonAnimation>
             width: _animation.value,
             height: 50,
             child: AnimatedOpacity(
-              duration: Duration(milliseconds: 200),
+              duration: Duration(milliseconds: 100),
               opacity: barColorOpacity,
               child: Container(
                 decoration: BoxDecoration(color: Colors.white),

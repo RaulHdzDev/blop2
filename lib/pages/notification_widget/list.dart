@@ -1,3 +1,4 @@
+import 'package:bloop/dominio/providers/local_notification.dart';
 import 'package:flutter/material.dart';
 
 class ListNotification extends StatelessWidget {
@@ -5,6 +6,8 @@ class ListNotification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localNotification = LocalNotification();
+    localNotification.initializeNotifications();
     final numItems = 3;
     final _biggerFont = const TextStyle(fontSize: 18.0);
     Widget _buildRow(int idx) {
@@ -15,11 +18,12 @@ class ListNotification extends StatelessWidget {
           height: 40,
         ),
         title: Text(
-          'Item Title $idx',
+          'Cita $idx',
           style: _biggerFont,
         ),
-        subtitle: Text('Item Description $idx'),
-        onTap: null,
+        subtitle: Text(' fecha: 2020-4-20'),
+        onTap: () {
+        }
       );
     }
 

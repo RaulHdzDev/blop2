@@ -26,7 +26,6 @@ class Header extends StatelessWidget {
                   ),
                 ],
               )),
-              IconButton(icon: Icon(Icons.search), color: Colors.black87,onPressed: (){}),
               IconButton(icon: Icon(Icons.delete), color: Colors.black87,onPressed: (){})
         ],
       ),

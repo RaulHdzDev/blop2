@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "35370582124",
+    "firebase_url": "https://hemodialisis-1a160.firebaseio.com",
+    "project_id": "hemodialisis-1a160",
+    "storage_bucket": "hemodialisis-1a160.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35370582124:android:01b7b8873b0559e7409849",
+        "android_client_info": {
+          "package_name": "com.example.blop2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35370582124-on2q0kjlie5qr803uojrqhso1n5ar575.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.blop2",
+            "certificate_hash": "eaec7cae36d5a0ed6a1fa544eb62907455f85c94"
+          }
+        },
+        {
+          "client_id": "35370582124-f4gr0uopso832elkao8ks8js37oucd1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCA0jasDZb8pTP8_lQGPFLZ1MfLelcQOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35370582124-f4gr0uopso832elkao8ks8js37oucd1m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

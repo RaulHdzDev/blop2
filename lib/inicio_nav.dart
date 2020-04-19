@@ -1,7 +1,9 @@
 import 'package:bloop/pages/profile_frag.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:provider/provider.dart';
 
+import 'dominio/providers/citas_provider.dart';
 import 'pages/homepage_frag.dart';
 import 'pages/notification_frag.dart';
 
@@ -11,10 +13,14 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  IconData icon_1= Icons.person;
+  IconData icon_2= Icons.home;
+  IconData icon_3= Icons.notifications;
+  @override
+  void initState() { 
+    super.initState();
+  }
   int pageindex = 1;
-  final homefragment _homefrag = homefragment();
-  final notification_fragment _notfrag = notification_fragment();
-  final profile_fragment _profrag = profile_fragment();
   Widget _showPage = new homefragment();
   Widget _pageChooser(int page) {
     switch (page) {
@@ -40,40 +46,43 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        bottomNavigationBar: CurvedNavigationBar(
-          key: _bottomNavigationKey,
-          index: pageindex,
-          items: <Widget>[
-            Icon(Icons.person, size: 30, color: Colors.black),
-            Icon(
-              Icons.home,
-              size: 30,
-              color: Colors.black,
-            ),
-            Icon(
-              Icons.notifications,
-              size: 30,
-              color: Colors.black,
-            ),
-          ],
-          buttonBackgroundColor: Colors.lightBlue,
-          animationCurve: Curves.easeInOut,
-          color: Colors.lightBlue,
-          backgroundColor: Colors.transparent,
-          height: 50,
-          animationDuration: Duration(milliseconds: 600),
-          onTap: (int tappindex) {
-            setState(() {
-              _showPage = _pageChooser(tappindex);
-            });
-          },
-        ),
-        body: Container(
-          color: Colors.white,
-          child: Center(
-            child: _showPage,
+    return ChangeNotifierProvider(
+      builder: (context)=>Citas(),
+      child: Scaffold(
+          bottomNavigationBar: CurvedNavigationBar(
+            key: _bottomNavigationKey,
+            index: pageindex,
+            items: <Widget>[
+              Icon(icon_1, size: 30, color: Colors.black),
+              Icon(
+                icon_2,
+                size: 30,
+                color: Colors.black,
+              ),
+              Icon(
+                icon_3,
+                size: 30,
+                color: Colors.black,
+              ),
+            ],
+            buttonBackgroundColor: Colors.lightBlue,
+            animationCurve: Curves.easeInOut,
+            color: Colors.lightBlue,
+            backgroundColor: Colors.transparent,
+            height: 50,
+            animationDuration: Duration(milliseconds: 600),
+            onTap: (int tappindex) {
+              setState(() {
+                _showPage = _pageChooser(tappindex);
+              });
+            },
           ),
-        ));
+          body: Container(
+            color: Colors.white,
+            child: Center(
+              child: _showPage,
+            ),
+          )),
+    );
   }
 }

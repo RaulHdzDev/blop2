@@ -89,6 +89,7 @@ class _HomeState extends State<Home> {
                                 child: Column(
                                   children: <Widget>[
                                     TextFormField(
+                                      keyboardType: TextInputType.emailAddress,
                                       style: TextStyle(color: Colors.black),
                                       autofocus: true,
                                       textAlign: TextAlign.left,
@@ -102,7 +103,7 @@ class _HomeState extends State<Home> {
                                           color: Colors.lightBlue,
                                         ),
                                         labelText: "Correo",
-                                        helperText:"tucorreo@ejemplo.com",
+                                        helperText: "tucorreo@ejemplo.com",
                                         labelStyle: TextStyle(
                                             fontFamily: "CaviarDreams",
                                             fontSize: 18),
@@ -186,10 +187,12 @@ class _HomeState extends State<Home> {
 
   //----------INICIA METODO LOGIN-----------------
 
-  Future<Map<String, dynamic>> login(String correo, String contra, BuildContext context) async {
+  Future<Map<String, dynamic>> login(
+      String correo, String contra, BuildContext context) async {
     final response = await http.post(
         'http://mante.hosting.acm.org/hemodialisis/mobile/loginHemoMobile.php',
-        body: { // deja tu like
+        body: {
+          // deja tu like
           'correo_electronico': correo,
           'codigo': contra,
         });
@@ -205,6 +208,7 @@ class _HomeState extends State<Home> {
       setState(() {
         prefs.nombre = datauser['nombre'].toString() ?? '';
         prefs.telefono = datauser['num_contacto_cel'].toString() ?? '';
+        prefs.id = datauser['id_pacientes'].toString() ?? '';
       });
       Navigator.pushReplacementNamed(context, 'inicio_nav');
     }
